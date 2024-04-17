@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Leanring Tool</title>
+  <script src="https://kit.fontawesome.com/23fdde0184.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="to-do-list-section">
+    <div class="add-to-do-item">
+        <input type="text" placeholder="Add Item" id="new-todo"  >
+        <button id="add-btn">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div class="todo-items-container">
+      <ul id="to-do-list">
+        <!-- Show To Do Items -->
+      </ul>
+    </div>
+  </section>
+  <section class="timer-section">
+    <div class="countdown-clock-container">
+      <div id="timer-control">
+        <button data-time="25" class="timer-button">25</button>
+        <button data-time="40" class="timer-button">40</button>
+        <button data-time="60" class="timer-button">60</button>       
+        <input type="text" name="minutes" placeholder="Minutes..." id="customize-btn">
+        
+      </div>
+      <h1 id="countdown-clock">
+        <!-- Show Count Down Clock -->
+      </h1>
+      <div class="start-btn-container">
+        <button id="start-btn">START</button>
+      </div>
+      <div class="reset-pause-btn-container">
+        <button id="reset-btn">RESET</button>
+        <button id="pause-btn">PAUSE</button>
+      </div>
+    </div>
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>
