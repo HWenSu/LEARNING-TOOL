@@ -10,10 +10,16 @@ const toDoList = document.querySelector('#to-do-list')
 const newTodoInput = document.querySelector('#new-todo')
 const addBtn = document.querySelector('#add-btn')
 
+const calculatorDisplay = document.querySelector('#calculator-display')
+const calculatorNumBtn = document.querySelectorAll('#calculator-btn')
+const calculatorClearDisplay = document.querySelector('#calculator-clear-display')
+const calculateBtn = document.querySelector('#calculate')
+
 
 const model = {
   setSecond: [1500],
-  toDoList: []
+  toDoList: [],
+  storeCalculatorStr: []
 }
 
 
@@ -25,6 +31,10 @@ const view = {
     const display = `${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
     timeDisplay.innerHTML = display
   },
+  //計算機顯示畫面
+  addToDisplay(number){
+    calculatorDisplay.value += `${number}`
+  }
 }
 
 const controller = {
@@ -64,6 +74,16 @@ const controller = {
   //Clear Input 
   clearInput() {
     newTodoInput.value = ''
+  },
+  //計算機運算
+  calculate() {
+    let result = eval( model.storeCalculatorStr.join(''))
+    view.addToDisplay(result)
+  },
+  //清除計算機畫面
+  calculatorClear(){
+    calculatorDisplay.value = ''
+    view.addToDisplay('')
   }
 }
 
@@ -136,3 +156,32 @@ resetButton.addEventListener('click', () => {
   view.displayTimeLeft(model.setSecond[0])
   timerButton.forEach((btn) => btn.disabled = false)
 })
+
+//計算機按鈕監聽器
+calculatorNumBtn.forEach((button) => { button.addEventListener('click', function onClicked(event){
+  let value = event.target.value
+  if(event.target.classList.contains('calculator-num')){
+    view.addToDisplay(value)
+    model.storeCalculatorStr.push(value)
+  } else if (event.target.classList.contains('calculator-operator')){
+    model.storeCalculatorStr.push(value)
+    controller.calculatorClear()
+  }
+  })
+})
+
+//計算機結果按鈕監聽器
+calculateBtn.addEventListener('click', ()=> {
+  controller.calculatorClear()
+  controller.calculate()
+})
+
+//計算機清除按鈕監聽器
+calculatorClearDisplay.addEventListener('click', ()=>{
+  controller.calculatorClear()
+  model.storeCalculatorStr = []
+})
+
+
+
+console.log(model.storeCalculatorStr)

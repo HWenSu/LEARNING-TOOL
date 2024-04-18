@@ -1,6 +1,7 @@
 body {
   margin: 0 auto;
   display: flex;
+  flex-direction: row-reverse;
   background-color: rgb(230, 230, 230);
 }
 
@@ -16,7 +17,7 @@ button {
   outline: none;
 }
 
-.to-do-list-section {
+.todo-calculator-section {
   margin: 3em;
   flex: 50% 1 1;
   display: flex;
@@ -125,6 +126,11 @@ h1 {
   background-color: #979797;
 }
 
+.todo-list-container{
+ width: 80%;
+ min-height: 15em;
+}
+
 .add-to-do-item {
   display: flex;
   text-align: center;
@@ -137,7 +143,7 @@ h1 {
   outline: none;
   border-radius: 5px;
   height: 2em;
-  width: 20em;
+  width: 80%;
   background-color: #929292;
   padding: 2px 10px;
   color: rgb(224, 224, 224);
@@ -332,4 +338,60 @@ li:hover .delete {
 }
 
 
+/* 計算機 */
+
+.calculator-container{
+  width: 60%;
+  height: 25em;
+}
+
+#calculator{
+  background-color: rgba(34, 34, 34, 0.6);
+  border-radius: 5px;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px #3c3c3c;
+  align-self: start;
+}
+
+#calculator-display{
+width: 95%;
+height: 1.5em;
+font-size: 25px;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+border: none;
+box-shadow: 0 2px 4px rgb(43, 43, 43);
+text-align: right;
+background-color: rgba(34, 34, 34, 0.6);
+color: #dddddd;
+}
+
+.calculator-btn{
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#calculator input[type='button']{
+  width: 20%;
+  height: 3em;
+  border-radius: 5px;
+  border: none;
+  margin: 0.3em;
+  padding: 0;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgb(84, 84, 84);
+}
+
+#calculator input[type='button']:hover{
+  background-color: rgba(160, 160, 160, 0.9);
+  color: #dddddd;
+}
 
