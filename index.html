@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,71 +9,93 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
+    href="https://fonts.googleapis.com/css2?family=Dangrek&family=Jersey+10&family=Josefin+Sans:ital@0;1&family=Rubik+Mono+One&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <section class="todo-calculator-section">
-    <div class="todo-list-container">
-    <div class="add-to-do-item">
-      <input type="text" placeholder="Add Item" id="new-todo">
-      <button id="add-btn">
-        <i class="fa-solid fa-plus"></i>
-      </button>
-    </div>
-    <div class="todo-items-container">
-      <ul id="to-do-list">
-        <!-- Show To Do Items -->
+  <!-- Nav Bar -->
+  <nav id="navbar">
+    <div class="navbar-container">
+      <a class="navbar-brand" href="#">Learning Tool</a>
+      <ul>
+        <li class="navbar-item">
+          <a href="#" class="home">HOME</a>
+        </li>
       </ul>
     </div>
-    </div>
-    <div class="calculator-container">
-      <div id="calculator">
-        <input type="text" id="calculator-display" readonly>
-        <div class="calculator-btn">
-          <input type="button" value="7" id="calculator-btn" class="calculator-num">
-          <input type="button" value="8" id="calculator-btn" class="calculator-num">
-          <input type="button" value="9" id="calculator-btn" class="calculator-num">
-          <input type="button" value="+" id="calculator-btn" class="calculator-operator">
-          <input type="button" value="-" id="calculator-btn" class="calculator-operator">
-          <input type="button" value="4" id="calculator-btn" class="calculator-num">
-          <input type="button" value="5" id="calculator-btn" class="calculator-num">
-          <input type="button" value="6" id="calculator-btn" class="calculator-num">
-          <input type="button" value="*" id="calculator-btn" class="calculator-operator">
-          <input type="button" value="/" id="calculator-btn" class="calculator-operator">
-          <input type="button" value="1" id="calculator-btn" class="calculator-num">
-          <input type="button" value="2" id="calculator-btn" class="calculator-num">
-          <input type="button" value="3" id="calculator-btn" class="calculator-num">
-          <input type="button" value="0" id="calculator-btn" class="calculator-num">
-          <input type="button" value="C" id="calculator-clear-display">
-          <input type="button" value="=" id="calculate">
+  </nav>
+  <div class="body-section">
+    <section class="todo-calculator-section">
+      <div class="todo-list-container">
+        <div class="add-to-do-item">
+          <input type="text" placeholder="Add Item" id="new-todo">
+          <button id="add-btn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
         </div>
-        
+        <div class="todo-items-container">
+          <ul id="to-do-list">
+            <!-- Show To Do Items -->
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="timer-section">
-    <div class="countdown-clock-container">
-      <div id="timer-control">
-        <button data-time="25" class="timer-button">25</button>
-        <button data-time="40" class="timer-button">40</button>
-        <button data-time="60" class="timer-button">60</button>       
-        <input type="text" name="minutes" placeholder="Minutes..." id="customize-btn">
-        
+      <div class="calculator-container">
+        <div id="calculator">
+          <input type="text" id="calculator-display" readonly>
+          <div class="calculator-btn">
+            <input type="button" value="7" id="calculator-btn" class="calculator-num">
+            <input type="button" value="8" id="calculator-btn" class="calculator-num">
+            <input type="button" value="9" id="calculator-btn" class="calculator-num">
+            <input type="button" value="+" id="calculator-btn" class="calculator-operator">
+            <input type="button" value="4" id="calculator-btn" class="calculator-num">
+            <input type="button" value="5" id="calculator-btn" class="calculator-num">
+            <input type="button" value="6" id="calculator-btn" class="calculator-num">
+            <input type="button" value="-" id="calculator-btn" class="calculator-operator">
+            <input type="button" value="1" id="calculator-btn" class="calculator-num">
+            <input type="button" value="2" id="calculator-btn" class="calculator-num">
+            <input type="button" value="3" id="calculator-btn" class="calculator-num">
+            <input type="button" value="*" id="calculator-btn" class="calculator-operator">
+            <input type="button" value="C" id="calculator-clear-display">
+
+            <input type="button" value="0" id="calculator-btn" class="calculator-num">
+            <input type="button" value="=" id="calculate">
+            <input type="button" value="/" id="calculator-btn" class="calculator-operator">
+
+          </div>
+
+        </div>
       </div>
-      <h1 id="countdown-clock">
-        <!-- Show Count Down Clock -->
-      </h1>
-      <div class="start-btn-container">
-        <button id="start-btn">START</button>
+    </section>
+    <section class="timer-section">
+      <div class="countdown-clock-container">
+        <div id="timer-control">
+          <button data-time="25" class="timer-button">25</button>
+          <button data-time="40" class="timer-button">40</button>
+          <button data-time="60" class="timer-button">60</button>
+          <input type="text" name="minutes" placeholder="min" id="customize-btn">
+
+        </div>
+        <h1 id="countdown-clock">
+          <!-- Show Count Down Clock -->
+        </h1>
+        <div class="start-btn-container">
+          <button id="start-btn">START</button>
+        </div>
+        <div class="reset-pause-btn-container">
+          <button id="reset-btn">RESET</button>
+          <button id="pause-btn">PAUSE</button>
+        </div>
       </div>
-      <div class="reset-pause-btn-container">
-        <button id="reset-btn">RESET</button>
-        <button id="pause-btn">PAUSE</button>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
   <script src="index.js"></script>
 </body>
+
 </html>

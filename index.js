@@ -32,7 +32,7 @@ const view = {
     timeDisplay.innerHTML = display
   },
   //計算機顯示畫面
-  addToDisplay(number){
+  addToDisplay(number) {
     calculatorDisplay.value += `${number}`
   }
 }
@@ -77,11 +77,11 @@ const controller = {
   },
   //計算機運算
   calculate() {
-    let result = eval( model.storeCalculatorStr.join(''))
+    let result = eval(model.storeCalculatorStr.join(''))
     view.addToDisplay(result)
   },
   //清除計算機畫面
-  calculatorClear(){
+  calculatorClear() {
     calculatorDisplay.value = ''
     view.addToDisplay('')
   }
@@ -128,22 +128,22 @@ toDoList.addEventListener('click', function onclicked(event) {
   if (target.classList.contains('delete')) {
     let parentElement = target.parentElement
     parentElement.remove()
-  } else if (target.tagName === 'SPAN'){
+  } else if (target.tagName === 'SPAN') {
     target.classList.toggle('checked')
-  } 
+  }
   console.log(target)
 })
 
 //自訂時間輸入監聽器
 customizeInput.addEventListener('input', function onSubmitted(event) {
-  let customizeSec = Number(this.value)*60
-  if(customizeSec > 0) {
-    view.displayTimeLeft(customizeSec) 
-  } else { 
+  let customizeSec = Number(this.value) * 60
+  if (customizeSec > 0) {
+    view.displayTimeLeft(customizeSec)
+  } else {
     alert('請輸入數字')
     this.value = ''
     return
-  } 
+  }
   if (model.setSecond.length !== 0) {
     model.setSecond = []
   } model.setSecond.push(customizeSec)
@@ -158,30 +158,27 @@ resetButton.addEventListener('click', () => {
 })
 
 //計算機按鈕監聽器
-calculatorNumBtn.forEach((button) => { button.addEventListener('click', function onClicked(event){
-  let value = event.target.value
-  if(event.target.classList.contains('calculator-num')){
-    view.addToDisplay(value)
-    model.storeCalculatorStr.push(value)
-  } else if (event.target.classList.contains('calculator-operator')){
-    model.storeCalculatorStr.push(value)
-    controller.calculatorClear()
-  }
+calculatorNumBtn.forEach((button) => {
+  button.addEventListener('click', function onClicked(event) {
+    let value = event.target.value
+    if (event.target.classList.contains('calculator-num')) {
+      view.addToDisplay(value)
+      model.storeCalculatorStr.push(value)
+    } else if (event.target.classList.contains('calculator-operator')) {
+      model.storeCalculatorStr.push(value)
+      controller.calculatorClear()
+    }
   })
 })
 
 //計算機結果按鈕監聽器
-calculateBtn.addEventListener('click', ()=> {
+calculateBtn.addEventListener('click', () => {
   controller.calculatorClear()
   controller.calculate()
 })
 
 //計算機清除按鈕監聽器
-calculatorClearDisplay.addEventListener('click', ()=>{
+calculatorClearDisplay.addEventListener('click', () => {
   controller.calculatorClear()
   model.storeCalculatorStr = []
 })
-
-
-
-console.log(model.storeCalculatorStr)
