@@ -1,3 +1,4 @@
+//倒數計時器變數
 let timer
 const timeDisplay = document.querySelector('#countdown-clock')
 const timerButton = document.querySelectorAll('.timer-button')
@@ -6,10 +7,12 @@ const resetButton = document.querySelector('#reset-btn')
 const pauseButton = document.querySelector('#pause-btn')
 const customizeInput = document.querySelector('#customize-btn')
 
+//代辦清單變數
 const toDoList = document.querySelector('#to-do-list')
 const newTodoInput = document.querySelector('#new-todo')
 const addBtn = document.querySelector('#add-btn')
 
+// 計算機變數
 const calculatorDisplay = document.querySelector('#calculator-display')
 const calculatorNumBtn = document.querySelectorAll('#calculator-btn')
 const calculatorClearDisplay = document.querySelector('#calculator-clear-display')
@@ -89,7 +92,9 @@ const controller = {
 
 view.displayTimeLeft(1500)
 
+//監聽器
 
+//計時器 快速設定時間監聽器
 timerButton.forEach(button => button.addEventListener('click', function onClicked(event) {
   const sec = Number(event.target.dataset.time) * 60
   view.displayTimeLeft(sec)
@@ -98,7 +103,7 @@ timerButton.forEach(button => button.addEventListener('click', function onClicke
   } model.setSecond.push(sec)
   console.log(model.setSecond[0])
 }))
-
+//計時器 開始按鈕監聽器
 startButton.addEventListener('click', function onClicked(event) {
   controller.timer(parseInt(model.setSecond[0]))
   startButton.disabled = true
@@ -106,35 +111,20 @@ startButton.addEventListener('click', function onClicked(event) {
   customizeInput.value = ''
   timerButton.forEach((btn) => btn.disabled = true)
 })
-
-
+//計時器 暫停按鈕監聽器
 pauseButton.addEventListener('click', () => {
   controller.pauseTimer()
   startButton.disabled = false
 })
-
-// 新增To Do 按鈕監聽器
-addBtn.addEventListener('click', function () {
-  let inputValue = newTodoInput.value
-  if (inputValue.length > 0) {
-    controller.addItem(inputValue)
-  }
-  controller.clearInput()
+// 計時器 重置按鈕監聽器
+resetButton.addEventListener('click', () => {
+  controller.pauseTimer()
+  startButton.disabled = false
+  customizeInput.disabled = false
+  view.displayTimeLeft(model.setSecond[0])
+  timerButton.forEach((btn) => btn.disabled = false)
 })
-
-//刪除按鈕監聽器
-toDoList.addEventListener('click', function onclicked(event) {
-  let target = event.target
-  if (target.classList.contains('delete')) {
-    let parentElement = target.parentElement
-    parentElement.remove()
-  } else if (target.tagName === 'SPAN') {
-    target.classList.toggle('checked')
-  }
-  console.log(target)
-})
-
-//自訂時間輸入監聽器
+//計時器 自訂時間輸入監聽器
 customizeInput.addEventListener('input', function onSubmitted(event) {
   let customizeSec = Number(this.value) * 60
   if (customizeSec > 0) {
@@ -149,12 +139,24 @@ customizeInput.addEventListener('input', function onSubmitted(event) {
   } model.setSecond.push(customizeSec)
 })
 
-resetButton.addEventListener('click', () => {
-  controller.pauseTimer()
-  startButton.disabled = false
-  customizeInput.disabled = false
-  view.displayTimeLeft(model.setSecond[0])
-  timerButton.forEach((btn) => btn.disabled = false)
+// 待辦清單 新增按鈕監聽器
+addBtn.addEventListener('click', function () {
+  let inputValue = newTodoInput.value
+  if (inputValue.length > 0) {
+    controller.addItem(inputValue)
+  }
+  controller.clearInput()
+})
+// 待辦清單 刪除按鈕監聽器
+toDoList.addEventListener('click', function onclicked(event) {
+  let target = event.target
+  if (target.classList.contains('delete')) {
+    let parentElement = target.parentElement
+    parentElement.remove()
+  } else if (target.tagName === 'SPAN') {
+    target.classList.toggle('checked')
+  }
+  console.log(target)
 })
 
 //計算機按鈕監聽器
@@ -170,13 +172,11 @@ calculatorNumBtn.forEach((button) => {
     }
   })
 })
-
 //計算機結果按鈕監聽器
 calculateBtn.addEventListener('click', () => {
   controller.calculatorClear()
   controller.calculate()
 })
-
 //計算機清除按鈕監聽器
 calculatorClearDisplay.addEventListener('click', () => {
   controller.calculatorClear()
