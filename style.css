@@ -1,13 +1,29 @@
 body {
   margin: 0 auto;
-  display: flex;
-  flex-direction: row-reverse;
   background-color: rgb(230, 230, 230);
+  background-image: url(https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 html,
 body {
-  font-family: 'Barlow Condensed', 'Noto Sans TC', sans-serif;
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.body-section{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+input, button {
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 button {
@@ -17,12 +33,20 @@ button {
   outline: none;
 }
 
+.countdown-clock{
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
 .todo-calculator-section {
   margin: 3em;
   flex: 50% 1 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .timer-section {
@@ -34,28 +58,35 @@ button {
   align-content: center;
 }
 
-#timer-control {
+.timer-control {
   height: 7em;
   margin: 0;
 }
 
-#timer-control input {
-  width: 5.5em;
-  height: 5.5em;
+
+
+.timer-control input {
+  width: 3.5em;
+  height: 3.5em;
   border-radius: 100px;
-  margin: 2em;
+  margin: 1em;
   border: none;
+  padding: 10px;
+  background-color: rgba(147, 147, 147, 0.553);
 }
 
-#timer-control input:focus {
+.timer-control input:focus {
   border: none;
   outline: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: rgba(194, 194, 194, 0.553);
 }
 
-#timer-control input::placeholder {
-  font-size: 1.2em;
+.timer-control input::placeholder {
+  font-size: 2m;
   font-style: italic;
+  padding: 1px;
+  color: #1d1d1d;
 }
 
 .barlow-condensed-medium {
@@ -73,16 +104,18 @@ h1 {
 .timer-button {
   justify-content: space-around;
   font-size: 1.5em;
-  background-color: #9d9d9d;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.553);
+  color: rgba(255, 255, 255, 0.406);
   border-radius: 100%;
-  padding: 1em;
+  width: 3em;
+  height: 3em;
   margin: 0.5em;
 }
 
 .timer-button:hover {
-  background-color: #7d7d7d;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: rgba(59, 59, 59, 0.7);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 7px 29px 0px;
+  color: rgba(255, 255, 255, 0.622);
 }
 
 
@@ -92,19 +125,20 @@ h1 {
   margin: 0 0 2em 0;
 }
 
-#start-btn {
-  font-size: 20px;
-  background-color: rgb(255, 255, 255);
+.start-btn {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.622);
   width: 80%;
   height: 100%;
   border-radius: 5px;
   box-shadow: rgba(11, 11, 12, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   transition-duration: 0.3s;
   transition-property: transform;
+  color: #454545;
 }
 
-#start-btn:hover {
-  background-color: rgb(68, 68, 68);
+.start-btn:hover {
+  background-color: rgba(59, 59, 59, 0.622);
   color: rgb(254, 254, 254);
   /* border: 1px solid black; */
   box-shadow: rgba(247, 247, 247, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -113,10 +147,11 @@ h1 {
 
 
 .reset-pause-btn-container button {
+  font-size: 18px;
   margin: 2em 3em 0;
   padding: 0;
-  background-color: #757575;
-  color: white;
+  background-color:rgba(127, 127, 127, 0.606);
+  color: rgba(255, 255, 255, 0.667);
   border-radius: 50px;
   width: 25%;
   height: 3em;
@@ -129,6 +164,10 @@ h1 {
 .todo-list-container{
  width: 80%;
  min-height: 15em;
+ background-color: rgba(0, 0, 0, 0.254);
+ border-radius: 10px;
+ backdrop-filter: blur(3px);
+ margin-bottom: 3em;
 }
 
 .add-to-do-item {
@@ -136,6 +175,7 @@ h1 {
   text-align: center;
   justify-content: center;
   align-items: center;
+  margin: 1.6em 0;
 }
 
 .add-to-do-item input {
@@ -144,27 +184,27 @@ h1 {
   border-radius: 5px;
   height: 2em;
   width: 80%;
-  background-color: #929292;
+  background-color:rgba(108, 108, 108, 0.128);
   padding: 2px 10px;
-  color: rgb(224, 224, 224);
+  color: rgba(255, 255, 255, 0.889);
 }
 
 .add-to-do-item input:focus {
   border: none;
   outline: none;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color: #757575;
+  box-shadow: rgba(0, 0, 0, 0.293) 0px 7px 29px 0px;
+  background-color: rgba(80, 80, 80, 0.311);
 }
 
 .add-to-do-item input::placeholder {
   font-size: 1.2em;
   font-style: italic;
   padding: 5px;
-  color: rgb(198, 198, 198);
+  color: rgba(189, 189, 189, 0.2);
 }
 
 .add-to-do-item button {
-  background-color: #1d1d1d;
+  background-color: #535353d3;
   border-radius: 100%;
   height: 2.5em;
   width: 2.5em;
@@ -175,13 +215,13 @@ h1 {
 }
 
 .add-to-do-item button:hover {
-  background-color: #bbbbbb;
+  background-color: #979797aa;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transform: scale(1.1)
 }
 
 .add-to-do-item i {
-  color: rgb(207, 207, 207);
+  color: rgba(207, 207, 207, 0.967);
   font-size: 20px;
 }
 
@@ -189,27 +229,24 @@ h1 {
   color: #1d1d1d;
 }
 
-#to-do-list {
+.to-do-list {
   list-style: none;
   padding: 0;
+  margin-left: 2em;
 }
 
 .todo-items-container {
   margin-top: 1em;
   width: 20em;
-  
 }
 
-#to-do-list li {
+.to-do-list li {
   display: flex;
   flex-direction: column;
   justify-content: space-around; 
 }
 
-
-
-
-#to-do-list li div {
+.to-do-list li div {
   display: flex;
   align-items: center;
   margin-bottom: 1em;
@@ -218,8 +255,8 @@ h1 {
 
 }
 
-#to-do-list label {
-  color: #3c3c3c;
+.to-do-list label {
+  color: #f7f7f7a5;
   font-size: 1.1em;
   overflow-wrap: break-word;
   vertical-align: middle;
@@ -233,31 +270,31 @@ h1 {
 
 li:hover .delete {
   opacity: 100;
-  color: #bababa;
+  color: #bababa63;
   font-size: 18px;
  
 }
 
-#to-do-list label span {
+.to-do-list label span {
   display: inline-block;
   position: relative;
   background-color: transparent;
   width: 25px;
   height: 25px;
   transform-origin: center;
-  border: 2px solid #333;
+  border: 2px solid #e4e4e47d;
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 15px;
   transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
 }
 
-#to-do-list label span::before {
+.to-do-list label span::before {
   content: "";
   width: 0px;
   height: 2px;
   border-radius: 2px;
-  background: #333;
+  background: #e4e4e47d;
   position: absolute;
   transform: rotate(45deg);
   top: 13px;
@@ -267,12 +304,12 @@ li:hover .delete {
   transition-property: transform;
 }
 
-#to-do-list label span::after {
+.to-do-list label span::after {
   content: "";
   width: 0;
   height: 2px;
   border-radius: 2px;
-  background: #333;
+  background: #e4e4e47d;
   position: absolute;
   transform: rotate(305deg);
   top: 16px;
@@ -282,56 +319,56 @@ li:hover .delete {
 }
 
 
-#to-do-list label:hover span::before {
+.to-do-list label:hover span::before {
   width: 5px;
   transition: width 100ms ease;
 }
 
 
-#to-do-list label:hover span::after {
+.to-do-list label:hover span::after {
   width: 10px;
   transition: width 150ms ease 100ms;
 }
 
-#to-do-list input[type=checkbox] {
+.to-do-list input[type=checkbox] {
   display: none;
 }
 
-#to-do-list .checked {
-  background-color: #333;
+.to-do-list .checked {
+  background-color: #e4e4e426;
   /* transform: scale(1.25); */
 }
 
-#to-do-list .checked::after {
+.to-do-list .checked::after {
   width: 10px;
-  background: #fff;
+  background: #f6f6f6;
   transition: width 150ms ease 100ms;
 }
 
-#to-do-list label:has(.checked) {
-  color: #acacac;
+.to-do-list label:has(.checked) {
+  color: #626262a8;
   text-decoration: line-through;
   font-style: italic;
 }
 
-#to-do-list .checked::before {
+.to-do-list .checked::before {
   width: 5px;
   background: #fff;
   transition: width 150ms ease 100ms;
 }
 
-#to-do-list .checked+label:hover span {
+.to-do-list .checked+label:hover span {
   background-color: #333;
   transform: scale(1.25);
 }
 
-#to-do-list .checked+label:hover span::after {
+.to-do-list .checked+label:hover span::after {
   width: 10px;
   background: #fff;
   transition: width 150ms ease 100ms;
 }
 
-#to-do-list .checked+label:hover span::before {
+.to-do-list .checked+label:hover span::before {
   width: 5px;
   background: #fff;
   transition: width 150ms ease 100ms;
@@ -340,58 +377,97 @@ li:hover .delete {
 
 /* 計算機 */
 
-.calculator-container{
-  width: 60%;
-  height: 25em;
-}
 
-#calculator{
-  background-color: rgba(34, 34, 34, 0.6);
-  border-radius: 5px;
-  width: 100%;
-  height: 90%;
+.calculator{
+  max-width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 2px 5px #3c3c3c;
-  align-self: start;
-}
-
-#calculator-display{
-width: 95%;
-height: 1.5em;
-font-size: 25px;
-padding: 10px;
-margin-bottom: 10px;
-border-radius: 5px;
-border: none;
-box-shadow: 0 2px 4px rgb(43, 43, 43);
-text-align: right;
-background-color: rgba(34, 34, 34, 0.6);
-color: #dddddd;
+  justify-content: center;
+  background-color: rgba(121, 121, 121, 0.122);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #6c6c6c44;
+  backdrop-filter: blur(5px);
 }
 
 .calculator-btn{
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  text-align: center;
 }
 
-#calculator input[type='button']{
-  width: 20%;
-  height: 3em;
-  border-radius: 5px;
-  border: none;
-  margin: 0.3em;
-  padding: 0;
-  font-size: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 4px rgb(84, 84, 84);
-}
-
-#calculator input[type='button']:hover{
+.calculator input[type='button']:hover{
   background-color: rgba(160, 160, 160, 0.9);
   color: #dddddd;
+}
+
+.calculator-operator, .calculator-num,.calculator-reset, .calculate{
+  width: 21%;
+  margin-bottom: 0.5em;
+  height: 3em;
+  border-radius: 5px;
+  font-size: 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.702);
+  box-shadow: 0 2px 4px rgba(76, 76, 76, 0.403);
+  color: #454545;
+}
+
+
+.calculator-operator{
+  background-color: rgba(128, 128, 128, 0.507);
+  color: #b0b0b0e0;
+}
+
+.calculator-reset, .calculate{
+  background-color: rgba(161, 161, 161, 0.702);
+  box-shadow: 0 2px 4px rgba(104, 104, 104, 0.403);
+  color: #e1e1e1;
+}
+
+.calculator-display{
+  height: 1.5em;
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 4px rgb(31, 30, 30);
+  text-align: right;
+  background-color: rgba(35, 35, 35, 0.095);
+  color: #dddddd;
+  backdrop-filter: blur(5px);
+  }
+
+.calculator-display:focus {
+  outline: none;
+}
+  
+
+/* nav bar */
+nav{
+  width: 100%;
+}
+.navbar-container{
+  background-color: #00000088;
+  display: flex;
+  align-items: center;
+  
+}
+
+.navbar-container a {
+  text-decoration: none;
+  color: #dddddd;
+}
+.navbar-container li a {
+  font-size: 1.2em;
+  color: #ffffff92;
+}
+
+.navbar-container li a:hover{
+  font-size: 1.2em;
+  color: #5b5b5b92;
+}
+
+.navbar-brand {
+  margin-left: 2em;
+  font-size: 1.5em;
 }
 

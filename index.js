@@ -11,15 +11,18 @@ const newTodoInput = document.querySelector('#new-todo')
 const addBtn = document.querySelector('#add-btn')
 
 const calculatorDisplay = document.querySelector('#calculator-display')
-const calculatorNumBtn = document.querySelectorAll('#calculator-btn')
+const calculatorBtn = document.querySelector('#calculator-btn')
 const calculatorClearDisplay = document.querySelector('#calculator-clear-display')
 const calculateBtn = document.querySelector('#calculate')
-
 
 const model = {
   setSecond: [1500],
   toDoList: [],
-  storeCalculatorStr: []
+  num1: '',
+  num2: '',
+  operatorSymbol: '',
+  calculateResult: '',
+  bool: false,
 }
 
 
@@ -32,12 +35,13 @@ const view = {
     timeDisplay.innerHTML = display
   },
   //計算機顯示畫面
-  addToDisplay(number){
-    calculatorDisplay.value += `${number}`
+  addToDisplay(number) {
+    calculatorDisplay.value = number
   }
 }
 
 const controller = {
+  
   //計時器
   timer(seconds) {
     const now = Date.now()
@@ -77,11 +81,24 @@ const controller = {
   },
   //計算機運算
   calculate() {
-    let result = eval( model.storeCalculatorStr.join(''))
-    view.addToDisplay(result)
+    switch(model.operatorSymbol) {
+      case '+':
+        model.calculateResult = model.num1 + model.num2
+        break
+      case '-':
+        model.calculateResult = model.num1 - model.num2
+        break
+      case '*':
+        model.calculateResult = model.num1 * model.num2
+        break
+      case '/':
+        model.calculateResult = model.num1 / model.num2
+        break
+    } 
+    
   },
   //清除計算機畫面
-  calculatorClear(){
+  calculatorClear() {
     calculatorDisplay.value = ''
     view.addToDisplay('')
   }
@@ -128,22 +145,22 @@ toDoList.addEventListener('click', function onclicked(event) {
   if (target.classList.contains('delete')) {
     let parentElement = target.parentElement
     parentElement.remove()
-  } else if (target.tagName === 'SPAN'){
+  } else if (target.tagName === 'SPAN') {
     target.classList.toggle('checked')
-  } 
+  }
   console.log(target)
 })
 
 //自訂時間輸入監聽器
 customizeInput.addEventListener('input', function onSubmitted(event) {
-  let customizeSec = Number(this.value)*60
-  if(customizeSec > 0) {
-    view.displayTimeLeft(customizeSec) 
-  } else { 
+  let customizeSec = Number(this.value) * 60
+  if (customizeSec > 0) {
+    view.displayTimeLeft(customizeSec)
+  } else {
     alert('請輸入數字')
     this.value = ''
     return
-  } 
+  }
   if (model.setSecond.length !== 0) {
     model.setSecond = []
   } model.setSecond.push(customizeSec)
@@ -158,30 +175,47 @@ resetButton.addEventListener('click', () => {
 })
 
 //計算機按鈕監聽器
-calculatorNumBtn.forEach((button) => { button.addEventListener('click', function onClicked(event){
-  let value = event.target.value
-  if(event.target.classList.contains('calculator-num')){
-    view.addToDisplay(value)
-    model.storeCalculatorStr.push(value)
-  } else if (event.target.classList.contains('calculator-operator')){
-    model.storeCalculatorStr.push(value)
-    controller.calculatorClear()
-  }
+calculatorBtn.addEventListener('click', function onClicked(event){
+    let bool = false // 控制給第幾個數字賦值
+    
+    value = event.target.value
+    if(!model.bool){
+      if(event.target.classList.contains('calculator-num')){
+        model.num1 += value
+        model.num1 = parseInt(model.num1)
+        view.addToDisplay(model.num1)
+      } else { 
+        if ((event.target.classList.contains('calculator-operator'))){
+          model.bool = true
+          model.operatorSymbol = value
+          console.log(model.num1)
+        }
+      }
+    } else {
+      if(event.target.classList.contains('calculator-num')){
+        model.num2 += value
+        model.num2 = parseInt(model.num2)
+        view.addToDisplay(model.num2)
+      }
+    }
+    //計算機結果
+    if (event.target.classList.contains('calculate')){
+      controller.calculate()
+      result = model.calculateResult.toString()
+      view.addToDisplay(result)
+      //將結果值改成下次運算的 num1
+      model.num1 = model.calculateResult
+      model.num2 = ''
+      model.bool = false
+    }
+    //清空計算機
+    if (event.target.classList.contains('calculator-reset')){
+      model.bool = false
+      model.num1 = ''
+      model.num2 = ''
+      model.calculateResult = ''
+      view.addToDisplay('')
+    }
   })
-})
-
-//計算機結果按鈕監聽器
-calculateBtn.addEventListener('click', ()=> {
-  controller.calculatorClear()
-  controller.calculate()
-})
-
-//計算機清除按鈕監聽器
-calculatorClearDisplay.addEventListener('click', ()=>{
-  controller.calculatorClear()
-  model.storeCalculatorStr = []
-})
 
 
-
-console.log(model.storeCalculatorStr)
