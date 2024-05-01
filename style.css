@@ -15,21 +15,12 @@ body {
   font-style: normal;
 }
 
-<<<<<<< HEAD
 .body-section{
-=======
-.body-section {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   display: flex;
   flex-direction: row-reverse;
 }
 
-<<<<<<< HEAD
 input, button {
-=======
-input,
-button {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   font-family: "Rubik Mono One", monospace;
   font-weight: 400;
   font-style: normal;
@@ -42,11 +33,7 @@ button {
   outline: none;
 }
 
-<<<<<<< HEAD
 .countdown-clock{
-=======
-#countdown-clock {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   font-family: "Rubik Mono One", monospace;
   font-weight: 400;
   font-style: normal;
@@ -78,11 +65,7 @@ button {
 
 
 
-<<<<<<< HEAD
 .timer-control input {
-=======
-#timer-control input {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   width: 3.5em;
   height: 3.5em;
   border-radius: 100px;
@@ -99,11 +82,7 @@ button {
   background-color: rgba(194, 194, 194, 0.553);
 }
 
-<<<<<<< HEAD
 .timer-control input::placeholder {
-=======
-#timer-control input::placeholder {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   font-size: 2m;
   font-style: italic;
   padding: 1px;
@@ -146,11 +125,7 @@ h1 {
   margin: 0 0 2em 0;
 }
 
-<<<<<<< HEAD
 .start-btn {
-=======
-#start-btn {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   font-size: 30px;
   background-color: rgba(255, 255, 255, 0.622);
   width: 80%;
@@ -162,11 +137,7 @@ h1 {
   color: #454545;
 }
 
-<<<<<<< HEAD
 .start-btn:hover {
-=======
-#start-btn:hover {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: rgba(59, 59, 59, 0.622);
   color: rgb(254, 254, 254);
   /* border: 1px solid black; */
@@ -179,11 +150,7 @@ h1 {
   font-size: 18px;
   margin: 2em 3em 0;
   padding: 0;
-<<<<<<< HEAD
   background-color:rgba(127, 127, 127, 0.606);
-=======
-  background-color: rgba(127, 127, 127, 0.606);
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   color: rgba(255, 255, 255, 0.667);
   border-radius: 50px;
   width: 25%;
@@ -194,7 +161,6 @@ h1 {
   background-color: #979797;
 }
 
-<<<<<<< HEAD
 .todo-list-container{
  width: 80%;
  min-height: 15em;
@@ -202,15 +168,6 @@ h1 {
  border-radius: 10px;
  backdrop-filter: blur(3px);
  margin-bottom: 3em;
-=======
-.todo-list-container {
-  width: 80%;
-  min-height: 15em;
-  background-color: rgba(0, 0, 0, 0.254);
-  border-radius: 10px;
-  backdrop-filter: blur(3px);
-  margin-bottom: 3em;
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
 }
 
 .add-to-do-item {
@@ -227,11 +184,7 @@ h1 {
   border-radius: 5px;
   height: 2em;
   width: 80%;
-<<<<<<< HEAD
   background-color:rgba(108, 108, 108, 0.128);
-=======
-  background-color: rgba(108, 108, 108, 0.128);
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   padding: 2px 10px;
   color: rgba(255, 255, 255, 0.889);
 }
@@ -290,14 +243,10 @@ h1 {
 .to-do-list li {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-around; 
 }
 
-<<<<<<< HEAD
 .to-do-list li div {
-=======
-#to-do-list li div {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   display: flex;
   align-items: center;
   margin-bottom: 1em;
@@ -306,11 +255,7 @@ h1 {
 
 }
 
-<<<<<<< HEAD
 .to-do-list label {
-=======
-#to-do-list label {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   color: #f7f7f7a5;
   font-size: 1.1em;
   overflow-wrap: break-word;
@@ -327,7 +272,7 @@ li:hover .delete {
   opacity: 100;
   color: #bababa63;
   font-size: 18px;
-
+ 
 }
 
 .to-do-list label span {
@@ -389,11 +334,7 @@ li:hover .delete {
   display: none;
 }
 
-<<<<<<< HEAD
 .to-do-list .checked {
-=======
-#to-do-list .checked {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: #e4e4e426;
   /* transform: scale(1.25); */
 }
@@ -404,11 +345,7 @@ li:hover .delete {
   transition: width 150ms ease 100ms;
 }
 
-<<<<<<< HEAD
 .to-do-list label:has(.checked) {
-=======
-#to-do-list label:has(.checked) {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   color: #626262a8;
   text-decoration: line-through;
   font-style: italic;
@@ -440,7 +377,6 @@ li:hover .delete {
 
 /* 計算機 */
 
-<<<<<<< HEAD
 
 .calculator{
   max-width: 80%;
@@ -458,71 +394,10 @@ li:hover .delete {
 }
 
 .calculator input[type='button']:hover{
-=======
-.calculator-container {
-  width: 60%;
-  height: 25em;
-}
-
-#calculator {
-  background-color: rgba(121, 121, 121, 0.122);
-  border-radius: 5px;
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 2px 5px #6c6c6c44;
-  align-self: start;
-  backdrop-filter: blur(5px);
-}
-
-#calculator-display {
-  width: 95%;
-  height: 1.5em;
-  font-size: 25px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 2px 4px rgb(31, 30, 30);
-  text-align: right;
-  background-color: rgba(35, 35, 35, 0.095);
-  color: #dddddd;
-  backdrop-filter: blur(5px);
-}
-
-#calculator-display:focus {
-  outline: none;
-}
-
-.calculator-btn {
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-/* #calculator input[type='button']{
-  width: 20%;
-  height: 3em;
-  border-radius: 5px;
-  border: none;
-  margin: 0.3em;
-  padding: 0;
-  font-size: 20px;
-  background-color: rgba(255, 255, 255, 0.702);
-  box-shadow: 0 2px 4px rgba(84, 84, 84, 0.532);
-  color: #454545;
-} */
-
-#calculator input[type='button']:hover {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: rgba(160, 160, 160, 0.9);
   color: #dddddd;
 }
 
-<<<<<<< HEAD
 .calculator-operator, .calculator-num,.calculator-reset, .calculate{
   width: 21%;
   margin-bottom: 0.5em;
@@ -530,52 +405,23 @@ li:hover .delete {
   border-radius: 5px;
   font-size: 20px;
   border: none;
-=======
-
-.calculator-operator,
-.calculator-num {
-  width: 20%;
-  height: 3em;
-  border-radius: 5px;
-  border: none;
-  margin: 0.3em;
-  padding: 0;
-  font-size: 20px;
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: rgba(255, 255, 255, 0.702);
   box-shadow: 0 2px 4px rgba(76, 76, 76, 0.403);
   color: #454545;
 }
 
-<<<<<<< HEAD
 
 .calculator-operator{
-=======
-.calculator-operator {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: rgba(128, 128, 128, 0.507);
   color: #b0b0b0e0;
 }
 
-<<<<<<< HEAD
 .calculator-reset, .calculate{
-=======
-#calculator-clear-display,
-#calculate {
-  width: 20%;
-  height: 3em;
-  border-radius: 5px;
-  border: none;
-  margin: 0.3em;
-  padding: 0;
-  font-size: 20px;
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   background-color: rgba(161, 161, 161, 0.702);
   box-shadow: 0 2px 4px rgba(104, 104, 104, 0.403);
   color: #e1e1e1;
 }
 
-<<<<<<< HEAD
 .calculator-display{
   height: 1.5em;
   font-size: 25px;
@@ -604,39 +450,18 @@ nav{
   display: flex;
   align-items: center;
   
-=======
-
-/* nav bar */
-#navbar {
-  width: 100%;
-}
-
-.navbar-container {
-  background-color: #00000088;
-  display: flex;
-  align-items: center;
-
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
 }
 
 .navbar-container a {
   text-decoration: none;
   color: #dddddd;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
 .navbar-container li a {
   font-size: 1.2em;
   color: #ffffff92;
 }
 
-<<<<<<< HEAD
 .navbar-container li a:hover{
-=======
-.navbar-container li a:hover {
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
   font-size: 1.2em;
   color: #5b5b5b92;
 }
@@ -644,9 +469,5 @@ nav{
 .navbar-brand {
   margin-left: 2em;
   font-size: 1.5em;
-<<<<<<< HEAD
 }
 
-=======
-}
->>>>>>> f8b182871aec13ef6483b40ac0129f204563a5db
