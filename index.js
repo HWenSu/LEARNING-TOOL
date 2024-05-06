@@ -14,15 +14,24 @@ const calculatorDisplay = document.querySelector('#calculator-display')
 const calculatorBtn = document.querySelector('#calculator-btn')
 const calculatorClearDisplay = document.querySelector('#calculator-clear-display')
 const calculateBtn = document.querySelector('#calculate')
+ let isClicked = false //判斷是否是第一次按運算符
+
+const CALCULATE_STATE = {
+  num1State: 'num1State',
+  num2State: 'num2State',
+  operateState: 'operateState',
+  operateState2: 'operateState2',
+  resultState: 'resultState',
+}
 
 const model = {
   setSecond: [1500],
   toDoList: [],
-  num1: '',
-  num2: '',
+  num1: [],
+  num2: [],
   operatorSymbol: '',
-  calculateResult: '',
-  bool: false,
+  calculateResult: 0,
+  displayValue:[]
 }
 
 
@@ -35,8 +44,8 @@ const view = {
     timeDisplay.innerHTML = display
   },
   //計算機顯示畫面
-  addToDisplay(number) {
-    calculatorDisplay.value = number
+  addToDisplay( value) {
+    calculatorDisplay.value = value
   }
 }
 
@@ -79,28 +88,69 @@ const controller = {
   clearInput() {
     newTodoInput.value = ''
   },
+  //計算機初始狀態
+  currentState: CALCULATE_STATE.num1State,
+  //計算機初始變化
+  calculateState() {
+    switch(this.currentState) {
+      case 'num1State':
+        model.num1.push(value)
+        model.displayValue.push(value)
+        view.addToDisplay(model.displayValue.join(''))
+        break
+      case 'operateState':
+        model.operatorSymbol = value
+        model.displayValue.push(model.operatorSymbol)
+        view.addToDisplay(model.displayValue.join(''))
+        break
+
+      case 'num2State':
+        model.num2.push(value)
+        model.displayValue.push(value)
+        view.addToDisplay(model.displayValue.join(''))
+        break
+      case 'operateState2':
+        model.operatorSymbol = value
+        model.displayValue.push(model.operatorSymbol)
+        view.addToDisplay(model.displayValue.join(''))
+        // isClicked = false
+        model.num1 = []
+        model.num2 = []
+        model.num1.push(model.calculateResult)
+        this.currentState = CALCULATE_STATE.num2State
+        break
+    }
+  },
   //計算機運算
   calculate() {
+    let num1 = Number(model.num1.join(''))
+    let num2 = Number(model.num2.join(''))
     switch(model.operatorSymbol) {
       case '+':
-        model.calculateResult = model.num1 + model.num2
+        model.calculateResult = num1 + num2
         break
       case '-':
-        model.calculateResult = model.num1 - model.num2
+        model.calculateResult = num1 - num2
         break
       case '*':
-        model.calculateResult = model.num1 * model.num2
+        model.calculateResult = num1 * num2
         break
       case '/':
-        model.calculateResult = model.num1 / model.num2
+        model.calculateResult = num1 / num2
         break
     } 
-    
+    result = model.calculateResult.toString()
+    view.addToDisplay(result)
+    console.log(model.calculateResult)
   },
   //清除計算機畫面
   calculatorClear() {
-    calculatorDisplay.value = ''
     view.addToDisplay('')
+    model.num1 = []
+    model.num2 = []
+    model.displayValue = []
+    model.calculateResult = 0
+    isClicked = false
   }
 }
 
@@ -174,48 +224,44 @@ resetButton.addEventListener('click', () => {
   timerButton.forEach((btn) => btn.disabled = false)
 })
 
+
 //計算機按鈕監聽器
 calculatorBtn.addEventListener('click', function onClicked(event){
-    let bool = false // 控制給第幾個數字賦值
-    
-    value = event.target.value
-    if(!model.bool){
-      if(event.target.classList.contains('calculator-num')){
-        model.num1 += value
-        model.num1 = parseInt(model.num1)
-        view.addToDisplay(model.num1)
-      } else { 
-        if ((event.target.classList.contains('calculator-operator'))){
-          model.bool = true
-          model.operatorSymbol = value
-          console.log(model.num1)
-        }
-      }
-    } else {
-      if(event.target.classList.contains('calculator-num')){
-        model.num2 += value
-        model.num2 = parseInt(model.num2)
-        view.addToDisplay(model.num2)
+   
+    let target = event.target
+    value = target.value
+    if(target.classList.contains('calculator-num') ) {
+      if (isClicked === false) {
+        controller.currentState = CALCULATE_STATE.num1State
+        controller.calculateState()
+      } else if (isClicked === true) {
+        controller.currentState = CALCULATE_STATE.num2State
+        controller.calculateState()
+      }   
+    } else if ( target.classList.contains('calculator-operator') ) {
+      if(isClicked === false){
+        isClicked = true
+        controller.currentState = CALCULATE_STATE.operateState
+        controller.calculateState()
+      } else if (isClicked === true) {
+        controller.currentState = CALCULATE_STATE.operateState2
+        controller.calculateState()
+       
       }
     }
+ 
+
+
     //計算機結果
     if (event.target.classList.contains('calculate')){
       controller.calculate()
-      result = model.calculateResult.toString()
-      view.addToDisplay(result)
-      //將結果值改成下次運算的 num1
-      model.num1 = model.calculateResult
-      model.num2 = ''
-      model.bool = false
+
     }
     //清空計算機
     if (event.target.classList.contains('calculator-reset')){
-      model.bool = false
-      model.num1 = ''
-      model.num2 = ''
-      model.calculateResult = ''
-      view.addToDisplay('')
+      controller.calculatorClear()
     }
   })
+
 
 
