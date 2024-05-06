@@ -14,7 +14,9 @@ const calculatorDisplay = document.querySelector('#calculator-display')
 const calculatorBtn = document.querySelector('#calculator-btn')
 const calculatorClearDisplay = document.querySelector('#calculator-clear-display')
 const calculateBtn = document.querySelector('#calculate')
- let isClicked = false //判斷是否是第一次按運算符
+
+let isClicked = false //判斷是否是第一次按運算符
+let isRepeat = false //判斷運算符是否重複點擊
 
 const CALCULATE_STATE = {
   num1State: 'num1State',
@@ -22,6 +24,7 @@ const CALCULATE_STATE = {
   operateState: 'operateState',
   operateState2: 'operateState2',
   resultState: 'resultState',
+  operateStateRepeat: 'operateStateRepeat'
 }
 
 const model = {
@@ -103,7 +106,6 @@ const controller = {
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
         break
-
       case 'num2State':
         model.num2.push(value)
         model.displayValue.push(value)
@@ -113,11 +115,13 @@ const controller = {
         model.operatorSymbol = value
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
-        // isClicked = false
         model.num1 = []
         model.num2 = []
         model.num1.push(model.calculateResult)
-        this.currentState = CALCULATE_STATE.num2State
+        break
+      case 'operateStateRepeat':
+        model.displayValue.splice(-2,1)
+        view.addToDisplay(model.displayValue.join(''))
         break
     }
   },
@@ -150,6 +154,7 @@ const controller = {
     model.num2 = []
     model.displayValue = []
     model.calculateResult = 0
+    model.operatorSymbol = ''
     isClicked = false
   }
 }
@@ -231,26 +236,36 @@ calculatorBtn.addEventListener('click', function onClicked(event){
     let target = event.target
     value = target.value
     if(target.classList.contains('calculator-num') ) {
+      isRepeat = false
       if (isClicked === false) {
         controller.currentState = CALCULATE_STATE.num1State
         controller.calculateState()
+        
       } else if (isClicked === true) {
         controller.currentState = CALCULATE_STATE.num2State
         controller.calculateState()
       }   
-    } else if ( target.classList.contains('calculator-operator') ) {
-      if(isClicked === false){
-        isClicked = true
-        controller.currentState = CALCULATE_STATE.operateState
-        controller.calculateState()
-      } else if (isClicked === true) {
-        controller.currentState = CALCULATE_STATE.operateState2
-        controller.calculateState()
-       
-      }
+    } else if (target.classList.contains('calculator-operator')) {
+        if(isClicked === false && model.num1.length !== 0){
+          isClicked = true
+          controller.currentState = CALCULATE_STATE.operateState
+          controller.calculateState()
+        } else if (isClicked === true) {
+          
+          controller.currentState = CALCULATE_STATE.operateState2
+          controller.calculateState()
+        } 
+        if ( isRepeat === true ) {
+          controller.currentState = CALCULATE_STATE.operateStateRepeat
+          controller.calculateState()
+          isRepeat = false
+        }
+        isRepeat = true
     }
  
-
+    console.log(controller.currentState)
+    console.log(model.operatorSymbol)
+    console.log(model.num1)
 
     //計算機結果
     if (event.target.classList.contains('calculate')){
