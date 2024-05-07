@@ -105,19 +105,21 @@ const controller = {
         model.operatorSymbol = value
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
+        this.calculate()
         break
       case 'num2State':
         model.num2.push(value)
         model.displayValue.push(value)
+        this.calculate()
         view.addToDisplay(model.displayValue.join(''))
+        model.num1 = []
+        model.num1.push(model.calculateResult)
+        model.num2 = []
         break
       case 'operateState2':
         model.operatorSymbol = value
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
-        model.num1 = []
-        model.num2 = []
-        model.num1.push(model.calculateResult)
         break
       case 'operateStateRepeat':
         model.displayValue.splice(-2,1)
@@ -143,9 +145,7 @@ const controller = {
         model.calculateResult = num1 / num2
         break
     } 
-    result = model.calculateResult.toString()
-    view.addToDisplay(result)
-    console.log(model.calculateResult)
+    
   },
   //清除計算機畫面
   calculatorClear() {
@@ -262,14 +262,15 @@ calculatorBtn.addEventListener('click', function onClicked(event){
         }
         isRepeat = true
     }
- 
+  
     console.log(controller.currentState)
-    console.log(model.operatorSymbol)
     console.log(model.num1)
+    console.log(model.num2)
+    console.log(model.calculateResult)
 
     //計算機結果
     if (event.target.classList.contains('calculate')){
-      controller.calculate()
+      view.addToDisplay(model.calculateResult)
 
     }
     //清空計算機
