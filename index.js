@@ -96,31 +96,38 @@ const controller = {
   //計算機初始變化
   calculateState() {
     switch(this.currentState) {
+      // 起始數字
       case 'num1State':
         model.num1.push(value)
         model.displayValue.push(value)
         view.addToDisplay(model.displayValue.join(''))
         break
+      //第一個運算符 
       case 'operateState':
         model.operatorSymbol = value
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
         this.calculate()
         break
+      // 第二個數字
       case 'num2State':
         model.num2.push(value)
         model.displayValue.push(value)
+        //開始運算
         this.calculate()
         view.addToDisplay(model.displayValue.join(''))
+        // 將運算結果推到第一個數字，並清空第二個數字
         model.num1 = []
         model.num1.push(model.calculateResult)
         model.num2 = []
         break
       case 'operateState2':
+      // 第二個運算符
         model.operatorSymbol = value
         model.displayValue.push(model.operatorSymbol)
         view.addToDisplay(model.displayValue.join(''))
         break
+      // 運算符重複
       case 'operateStateRepeat':
         model.displayValue.splice(-2,1)
         view.addToDisplay(model.displayValue.join(''))
@@ -251,7 +258,6 @@ calculatorBtn.addEventListener('click', function onClicked(event){
           controller.currentState = CALCULATE_STATE.operateState
           controller.calculateState()
         } else if (isClicked === true) {
-          
           controller.currentState = CALCULATE_STATE.operateState2
           controller.calculateState()
         } 
@@ -268,10 +274,13 @@ calculatorBtn.addEventListener('click', function onClicked(event){
     console.log(model.num2)
     console.log(model.calculateResult)
 
-    //計算機結果
+    //計算機結果，將前面的運算過程清空，只留下結果
     if (event.target.classList.contains('calculate')){
+      model.num1 = []
+      model.displayValue = []
+      model.num1.push(model.calculateResult)
+      model.displayValue.push(model.calculateResult)
       view.addToDisplay(model.calculateResult)
-
     }
     //清空計算機
     if (event.target.classList.contains('calculator-reset')){
